@@ -22,29 +22,30 @@ class TicTacToeVM: ObservableObject {
         model.size
     }
     
-    var winner: Int {
-        return model.winner
+    var state: TicTacToeModel.State {
+        return model.state
     }
     
     var statusText: String {
-        if model.winner == 0 {
-            if model.turn {
-                return "X turn"
-            }
-            else {
-                return "0 turn"
-            }
-        }
-        else if model.winner == 1 {
-            return "X won"
-        }
-        else {
-            return "0 won"
+        switch model.state {
+            case .Xwin:
+                return "X won"
+            case .ZeroWin:
+                return "0 won"
+            case .Tie:
+                return "Tie"
+            case .GameContinues:
+                if model.turn {
+                    return "X turn"
+                }
+                else {
+                    return "0 turn"
+                }
         }
     }
     
     func makeMove(cell: TicTacToeModel.Cell) -> Bool {
-        return model.makeMove(i: cell.i, j: cell.j)
+        return model.makeMove(cell.i, cell.j)
     }
     
     func new() {

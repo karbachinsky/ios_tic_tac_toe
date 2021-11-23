@@ -26,7 +26,6 @@ struct ContentView: View {
                             CardView(cell: game.cells[i][j]).aspectRatio(
                                 1/1, contentMode: .fit
                             ).onTapGesture {
-                                print("Tapped \(i) \(j)")
                                 game.makeMove(cell: game.cells[i][j])
                             }
                         }
@@ -38,7 +37,7 @@ struct ContentView: View {
             Text("\(game.statusText)")
                 .font(.largeTitle)
                 .fontWeight(.light)
-            if game.winner != 0 {
+            if game.state != .GameContinues {
                 Button("New Game") {
                     game.new()
                 }
@@ -55,12 +54,14 @@ struct CardView: View {
             let shape = RoundedRectangle(
                 cornerRadius: 25.0
             )
-            shape.strokeBorder()
+            shape
             if cell.value == 1 {
                 Text("X")
+                    .foregroundColor(Color.white)
             }
             else if cell.value == -1 {
                 Text("0")
+                    .foregroundColor(Color.white)
             }
         }
         .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)

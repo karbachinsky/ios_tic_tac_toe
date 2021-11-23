@@ -15,9 +15,16 @@ struct TicTacToeModel {
         var j: Int
     }
     
+    enum State: String {
+        case GameContinues
+        case Xwin
+        case ZeroWin
+        case Tie
+    }
+    
     var size: Int
     var turn = true // true – player #1, false – player #2
-    var winner = 0 // 0 – nobody, 1 – X won, Y –  0 won
+    var state = State.GameContinues
     
     private(set) var cells = [[Cell]]()
     
@@ -31,11 +38,11 @@ struct TicTacToeModel {
         self.size = size
     }
     
-    mutating func makeMove(i: Int, j: Int) -> Bool {
+    mutating func makeMove(_ i: Int, _ j: Int) -> Bool {
         if cells[i][j].value != 0 {
             return false
         }
-        if (winner != 0) {
+        if (state != .GameContinues) {
             return false
         }
         if turn {
@@ -44,24 +51,33 @@ struct TicTacToeModel {
         else {
             cells[i][j].value = -1
         }
-        winner = checkWinner()
+        
+        state = updateState()
+        
         turn.toggle()
-        print("GGOGOG \(cells)")
-        return false
+        
+        return true
     }
     
-    func checkWinner() -> Int {
-        func _check(_ sum: Int) -> Int {
-            if sum == -size {return -1}
-            if sum == size {return 1}
-            return 0
+    func updateState() -> State {
+        var isTie = true
+        
+        func _check(_ sum: Int) -> State {
+            if sum == -size {return .ZeroWin}
+            if sum == size {return .Xwin}
+            return .GameContinues
         }
+        
+        var mainDiagsum = 0
+        var sideDiagsum = 0
+        
         for i in 0..<size {
             var rowSum = 0
             var columnSum = 0
-            var mainDiagsum = 0
-            var sideDiagsum = 0
             for j in 0..<size {
+                if cells[i][j].value == 0 {
+                    isTie = false
+                }
                 rowSum += cells[i][j].value
                 columnSum += cells[j][i].value
                 if i == j {
@@ -70,13 +86,20 @@ struct TicTacToeModel {
                 }
             }
             
-            for sum in [rowSum, columnSum, mainDiagsum, sideDiagsum] {
-                let res = _check(sum)
-                if res != 0 {
-                    return res
+            for sum in [rowSum, columnSum] {
+                let _state = _check(sum)
+                if _state != .GameContinues {
+                    return _state
                 }
             }
         }
-        return 0
+        
+        for sum in [mainDiagsum, sideDiagsum] {
+            let _state = _check(sum)
+            if _state != .GameContinues {
+                return _state
+            }
+        }
+        return isTie ? .Tie : .GameContinues
     }
 }

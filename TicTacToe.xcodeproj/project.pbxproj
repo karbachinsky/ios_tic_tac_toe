@@ -23,14 +23,14 @@
 			containerPortal = 7850CD922731D74A008278B8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 7850CD992731D74B008278B8;
-			remoteInfo = Memorize;
+			remoteInfo = TicTacToe;
 		};
 		7850CDB72731D74D008278B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7850CD922731D74A008278B8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 7850CD992731D74B008278B8;
-			remoteInfo = Memorize;
+			remoteInfo = TicTacToe;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -152,7 +152,7 @@
 			dependencies = (
 			);
 			name = TicTacToe;
-			productName = Memorize;
+			productName = TicTacToe;
 			productReference = 7850CD9A2731D74B008278B8 /* TicTacToe.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -170,7 +170,7 @@
 				7850CDAD2731D74D008278B8 /* PBXTargetDependency */,
 			);
 			name = TicTacToeTests;
-			productName = MemorizeTests;
+			productName = TicTacToeTests;
 			productReference = 7850CDAB2731D74D008278B8 /* TicTacToeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -188,7 +188,7 @@
 				7850CDB82731D74D008278B8 /* PBXTargetDependency */,
 			);
 			name = TicTacToeUITests;
-			productName = MemorizeUITests;
+			productName = TicTacToeUITests;
 			productReference = 7850CDB62731D74D008278B8 /* TicTacToeUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
@@ -524,7 +524,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Memorize;
+				TEST_TARGET_NAME = TicTacToe;
 			};
 			name = Debug;
 		};
@@ -544,7 +544,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Memorize;
+				TEST_TARGET_NAME = TicTacToe;
 			};
 			name = Release;
 		};
