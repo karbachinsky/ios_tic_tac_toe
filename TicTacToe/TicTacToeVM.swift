@@ -9,7 +9,7 @@ import Foundation
 
 class TicTacToeVM: ObservableObject {
     static func getNewModel() -> TicTacToeModel {
-        TicTacToeModel(size: 3)
+        TicTacToeModel(size: 5)
     }
     
     @Published private var model = getNewModel()

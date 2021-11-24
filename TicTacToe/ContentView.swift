@@ -10,15 +10,19 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var game: TicTacToeVM
     
+    var columns: [GridItem] {
+        var x: [GridItem] = []
+        for _ in 0..<game.size {
+            x.append(GridItem());
+        }
+        return x
+    }
+    
     var body: some View {
         VStack {
             ScrollView {
                 LazyVGrid(
-                    columns: [
-                        GridItem(),
-                        GridItem(),
-                        GridItem()
-                    ]
+                    columns: columns
                 )
                 {
                     ForEach(0..<game.size) { i in
