@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct TicTacToeGameView: View {
     @ObservedObject var game: TicTacToeVM
     
     var columns: [GridItem] {
@@ -78,6 +78,6 @@ struct ContentView_Previews: PreviewProvider {
     var game: TicTacToeVM
     
     static var previews: some View {
-        ContentView(game: TicTacToeVM())
+        TicTacToeGameView(game: TicTacToeVM())
     }
 }

@@ -11,8 +11,8 @@ import Foundation
 struct TicTacToeModel {
     struct Cell {
         var value: Int
-        var i: Int
-        var j: Int
+        let i: Int
+        let j: Int
     }
     
     enum State: String {

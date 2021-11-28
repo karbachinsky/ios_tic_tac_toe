@@ -13,7 +13,7 @@ struct TicTacToeApp: App {
         let game = TicTacToeVM()
         
         WindowGroup {
-            ContentView(game: game)
+            TicTacToeGameView(game: game)
         }
     }
 }
