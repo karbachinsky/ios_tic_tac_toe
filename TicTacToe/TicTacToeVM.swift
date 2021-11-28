@@ -8,13 +8,15 @@
 import Foundation
 
 class TicTacToeVM: ObservableObject {
+    typealias Cell = TicTacToeModel.Cell
+    
     static func getNewModel() -> TicTacToeModel {
         TicTacToeModel(size: 5)
     }
     
     @Published private var model = getNewModel()
     
-    var cells: [[TicTacToeModel.Cell]] {
+    var cells: [[Cell]] {
         model.cells
     }
     
@@ -44,7 +46,7 @@ class TicTacToeVM: ObservableObject {
         }
     }
     
-    func makeMove(cell: TicTacToeModel.Cell) -> Bool {
+    func makeMove(cell: Cell) -> Bool {
         return model.makeMove(cell.i, cell.j)
     }
     
